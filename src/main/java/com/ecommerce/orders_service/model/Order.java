@@ -14,16 +14,37 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "user_id", nullable = false)
     private Long userId;
+
+    @Column(name = "total", nullable = false)
     private BigDecimal total;
+
+    @Column(name = "status", nullable = false)
     private String status;
+
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    // Relacion 1:N con OrderItem
+    // Relación 1:N con OrderItem
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> items = new ArrayList<>();
 
+    @PrePersist
+    public void prePersist() {
+        this.createdAt = LocalDateTime.now();
+        if (this.status == null) {
+            this.status = "CREATED";
+        }
+    }
+
     public Order() {}
+
+    public Order(Long userId, BigDecimal total, String status) {
+        this.userId = userId;
+        this.total = total;
+        this.status = status;
+    }
 
     // Getters y Setters
     public Long getId() { return id; }
