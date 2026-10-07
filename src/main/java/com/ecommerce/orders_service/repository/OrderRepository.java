@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Long> {
 
-    // Método personalizado para buscar pedidos por el ID del cliente
-    List<Order> findByCustomerId(Long customerId);
+    // Método personalizado para buscar pedidos por el ID del usuario
+    List<Order> findByUserId(Long userId);
 
 }

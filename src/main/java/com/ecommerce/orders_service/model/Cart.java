@@ -13,8 +13,13 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "user_id", nullable = false)
     private Long userId;
+
+    @Column(name = "created_date")
     private LocalDateTime createdDate;
+
+    @Column(name = "updated_date")
     private LocalDateTime updatedDate;
 
     // Relacion 1:N con CartItem
