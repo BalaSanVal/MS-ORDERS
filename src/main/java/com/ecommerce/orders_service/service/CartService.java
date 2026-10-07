@@ -60,7 +60,7 @@ public class CartService {
     }
 
     /**
-     * Metodo utilitario para mapear la entidad Cart a CartResponse DTO.
+     * Metodo utilitario para mapear la entidad Cart a CartResponse DTO
      */
     public CartResponse mapToCartResponse(Cart cart) {
         List<CartItemDto> itemDtos = cart.getItems() != null ?
